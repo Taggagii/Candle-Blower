@@ -1,6 +1,11 @@
 import discord
-
+import TurnMotor
 client = discord.Client()
+
+from TurnMotor import TurnMotor
+
+turnMotor = TurnMotor.TurnMotor()
+
 
 @client.event
 async def on_ready():
@@ -11,7 +16,7 @@ async def on_message(message):
     if message.author.bot:
         return;
     if message.content.lower() == "blow":
-        #blow()
+        turnMotor.run()
         await message.reply("blowing out the candles")
 
 try:
