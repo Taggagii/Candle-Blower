@@ -1,5 +1,7 @@
 .key
-pusher.py
+backup.py
+pusher.bat
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
