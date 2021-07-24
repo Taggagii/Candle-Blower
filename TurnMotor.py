@@ -1,4 +1,5 @@
 from Motor import Motor
+import time
 
 class TurnMotor:
     def run(self):
@@ -6,14 +7,26 @@ class TurnMotor:
             self.PWM=Motor()
             self.PWM.setMotorModel(0,0,0,0)
             # second motor is the one on foam
-            while True:
-                self.PWM.setMotorModel(0,3600,0,0)
+            self.PWM.setMotorModel(3600,0,0,0)
+        except:
+           self.PWM
+           self.PWM.setMotorModel(0,0,0,0) 
+    def stop(self):
+        try:
+            self.PWM = Motor()
+            self.PWM.setMotorModel(0, 0, 0, 0)
                     
-        except KeyboardInterrupt:
+        except:
            self.PWM
            self.PWM.setMotorModel(0,0,0,0) 
 
 if __name__=='__main__':
     print ('Program is starting ... ')
     turnMotor = TurnMotor()
-    turnMotor.run()
+    try:
+        turnMotor.run()
+        time.sleep(30)
+        turnMotor.stop()
+    except:
+        turnMotor.stop()
+

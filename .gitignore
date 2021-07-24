@@ -1,3 +1,4 @@
+*.avi
 .key
 backup.py
 pusher.bat
