@@ -2,6 +2,7 @@
 .key
 backup.py
 pusher.bat
+*.png
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
