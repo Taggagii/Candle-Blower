@@ -1,10 +1,9 @@
-import cv2
+import cv2, os
 
-cap = cv2.VideoCapture('output.avi')
+cap = cv2.VideoCapture(0)
 
 frame_width, frame_height = int(cap.get(3)), int(cap.get(4))
 
-counter = 0
 while cap.isOpened():
     ret, frame = cap.read()
     if not ret:
@@ -18,17 +17,15 @@ while cap.isOpened():
     
     if contours != []:
         for contour, hier in zip(contours, hierarchy[0]):
-            counter += 1
             (x, y, w, h) = cv2.boundingRect(contour)
             cv2.rectangle(dilated, (x, y), (x + w, y + h), (0, 255, 0), 2)
-            
-    STATUS = cv2.imwrite(str(counter) + ".png", dilated)
-                    
-                
-    cv2.imshow("Camera thing", frame)
+    dilated = cv2.resize(dilated, (180, 180))
+    
+    cv2.imshow("Camera thing", dilated)
     if cv2.waitKey(60) == ord("`"):
         break
     
     
 
 cv2.destroyAllWindows()
+
