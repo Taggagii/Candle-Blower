@@ -3,10 +3,14 @@ import TurnMotor
 client = discord.Client()
 import time
 
+import tensorflow as tf
+
 
 from TurnMotor import TurnMotor
 
 turnMotor = TurnMotor()
+
+model = tf.keras.models.load_model('model')
 
 
 @client.event
